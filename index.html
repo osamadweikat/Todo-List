@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(30, 0, 77);
+        }
+
+        .task {
+            display: flex;
+            background-color: white;
+            padding: 4px;
+            border-bottom: solid black 1px;
+            transition: box-shadow 0.2s;
+        }
+
+        .task:hover {
+            box-shadow: 0px 3px 15px rgba(97, 97, 97, 0.843);
+        }
+
+        .tasks-table {
+            background-color: rgb(239, 239, 239);
+            width: 60%;
+            margin-top: 130px;
+        }
+
+        button {
+            border: none;
+            font-size: 20px;
+            box-shadow: 0px 3px 5px rgba(168, 168, 168, 0.38);
+        }
+
+        button.circular {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+
+        }
+    </style>
+</head>
+<body style="direction: rtl;">
+    <div>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <div class="tasks-table">
+                <div style="width: 100%; text-align: center; background-color: rgb(92, 52, 155); color: white; padding-top: 8px; padding-bottom: 8px;">
+                    <h1 style="display: inline;">مهامي</h1>
+                    <button class="circular" style="float: right; background: white; margin-right: 10px;">add</button>
+                </div>
+                <div class="tasks" style="padding: 20px;">
+                    <div class="task">
+                        <div style="width: 70%;">
+                            <h2>قراءة كتاب</h2>
+                            <div>
+                                <span>
+                                    10/10/2020
+                                </span>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 20%;">
+                            <button class="circular" style="background-color: rgb(114, 0, 0); color: white;">D</button>
+                            <button class="circular" style="background-color: rgb(0, 150, 30); color: white;">C</button>
+                            <button class="circular" style="background-color: rgba(0, 16, 197, 0.692); color: white;">E</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
