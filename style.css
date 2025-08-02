@@ -1,0 +1,39 @@
+body {
+  background-color: rgb(30, 0, 77);
+  font-family: "Tajawal", sans-serif;
+}
+
+.task {
+  display: flex;
+  background-color: white;
+  padding: 4px;
+  border-bottom: solid black 1px;
+  transition: box-shadow 0.2s;
+}
+
+.done {
+  background-color: rgb(158, 253, 160);
+}
+
+.task:hover {
+  box-shadow: 0px 3px 15px rgba(97, 97, 97, 0.843);
+}
+
+.tasks-table {
+  background-color: rgb(239, 239, 239);
+  width: 60%;
+  margin-top: 130px;
+}
+
+button {
+  border: none;
+  font-size: 20px;
+  box-shadow: 0px 3px 5px rgba(168, 168, 168, 0.38);
+}
+
+button.circular {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 0;
+}
