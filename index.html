@@ -27,6 +27,10 @@
         transition: box-shadow 0.2s;
       }
 
+      .done {
+        background-color: rgb(158, 253, 160);
+      }
+
       .task:hover {
         box-shadow: 0px 3px 15px rgba(97, 97, 97, 0.843);
       }
@@ -132,7 +136,7 @@
       {
         title: "إنهاء المشروع النهائي",
         date: "15/10/2030",
-        isDone: false,
+        isDone: true,
       },
       {
         title: "إنهاء كورس الجافاسكريبت",
@@ -145,7 +149,7 @@
       document.getElementById("tasks").innerHTML = "";
       let index = 0;
       for (task of tasks) {
-        let content = `<div class="task">
+        let content = `<div class="task ${task.isDone ? "done" : ""}">
               <div style="width: 70%">
                 <h2>${task.title}</h2>
                 <div>
@@ -170,12 +174,23 @@
                 >
                   <span class="material-symbols-outlined"> delete </span>
                 </button>
-                <button
+                ${
+                  task.isDone
+                    ? `<button
+                onclick="toggleTaskCompletion(${index})"
+                  class="circular"
+                  style="background-color: rgb(118, 0, 101); color: white"
+                >
+                  <span class="material-symbols-outlined"> cancel </span>
+                </button>`
+                    : `<button
+                onclick="toggleTaskCompletion(${index})"
                   class="circular"
                   style="background-color: rgb(0, 150, 30); color: white"
                 >
                   <span class="material-symbols-outlined"> done </span>
-                </button>
+                </button>`
+                }
                 <button
                 onclick="editTask(${index})"
                   class="circular"
@@ -236,6 +251,12 @@
       let task = tasks[index];
       let newTaskTitl = prompt("الرجاء إدخال عنوان المهمة الجديد", task.title);
       task.title = newTaskTitl;
+      fillTasksOnThePage();
+    }
+
+    function toggleTaskCompletion(index) {
+      let task = tasks[index];
+      task.isDone = !task.isDone;
       fillTasksOnThePage();
     }
   </script>
