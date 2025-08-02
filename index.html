@@ -143,7 +143,7 @@
 
     function fillTasksOnThePage() {
       document.getElementById("tasks").innerHTML = "";
-      let index = 0
+      let index = 0;
       for (task of tasks) {
         let content = `<div class="task">
               <div style="width: 70%">
@@ -177,6 +177,7 @@
                   <span class="material-symbols-outlined"> done </span>
                 </button>
                 <button
+                onclick="editTask(${index})"
                   class="circular"
                   style="
                     background-color: rgba(0, 16, 197, 0.692);
@@ -221,14 +222,21 @@
       fillTasksOnThePage();
     });
 
-    function deleteTask(index){
-        let task = tasks[index]
-        let isConfirmed = confirm("هل أنت متأكد من حذف : " + task.title + "؟")
+    function deleteTask(index) {
+      let task = tasks[index];
+      let isConfirmed = confirm("هل أنت متأكد من حذف : " + task.title + "؟");
 
-        if(isConfirmed){
-            tasks.splice(index, 1)
+      if (isConfirmed) {
+        tasks.splice(index, 1);
         fillTasksOnThePage();
-        }
+      }
+    }
+
+    function editTask(index) {
+      let task = tasks[index];
+      let newTaskTitl = prompt("الرجاء إدخال عنوان المهمة الجديد", task.title);
+      task.title = newTaskTitl;
+      fillTasksOnThePage();
     }
   </script>
 </html>
