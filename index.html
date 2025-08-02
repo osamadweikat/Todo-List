@@ -67,6 +67,7 @@
           >
             <h1 style="display: inline">مهامي</h1>
             <button
+              id="add-btn"
               class="circular"
               style="float: right; background: white; margin-right: 10px"
             >
@@ -139,9 +140,11 @@
         isDone: false,
       },
     ];
-    document.getElementById("tasks").innerHTML = "";
-    for (task of tasks) {
-      let content = `<div class="task">
+
+    function fillTasksOnThePage() {
+      document.getElementById("tasks").innerHTML = "";
+      for (task of tasks) {
+        let content = `<div class="task">
               <div style="width: 70%">
                 <h2>${task.title}</h2>
                 <div>
@@ -182,7 +185,37 @@
                 </button>
               </div>
             </div>`;
-      document.getElementById("tasks").innerHTML += content;
+        document.getElementById("tasks").innerHTML += content;
+      }
     }
+
+    fillTasksOnThePage();
+    document.getElementById("add-btn").addEventListener("click", function () {
+      let taskName = prompt("الرجاء إدخال عنوان المهمة");
+      let now = new Date();
+
+      let day = now.getDate();
+      let month = now.getMonth() + 1;
+      let year = now.getFullYear();
+
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+
+      let ampm = hours >= 12 ? "مساءً" : "صباحًا";
+
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+
+      let date = `${day}-${month}-${year} | ${hours}:${minutes} ${ampm}`;
+
+      let taskObj = {
+        title: taskName,
+        date: date,
+        isDone: false,
+      };
+      tasks.push(taskObj);
+      fillTasksOnThePage();
+    });
   </script>
 </html>
