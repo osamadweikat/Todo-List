@@ -73,7 +73,7 @@
               <span class="material-symbols-outlined"> add </span>
             </button>
           </div>
-          <div class="tasks" style="padding: 20px">
+          <div id="tasks" style="padding: 20px">
             <div class="task">
               <div style="width: 70%">
                 <h2>قراءة كتاب</h2>
@@ -120,4 +120,69 @@
       </div>
     </div>
   </body>
+
+  <script>
+    let tasks = [
+      {
+        title: "قراءة كتاب",
+        date: "15/10/2030",
+        isDone: false,
+      },
+      {
+        title: "إنهاء المشروع النهائي",
+        date: "15/10/2030",
+        isDone: false,
+      },
+      {
+        title: "إنهاء كورس الجافاسكريبت",
+        date: "15/10/2030",
+        isDone: false,
+      },
+    ];
+    document.getElementById("tasks").innerHTML = "";
+    for (task of tasks) {
+      let content = `<div class="task">
+              <div style="width: 70%">
+                <h2>${task.title}</h2>
+                <div>
+                  <span class="material-symbols-outlined">
+                    calendar_month
+                  </span>
+                  <span>${task.date}</span>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  width: 20%;
+                "
+              >
+                <button
+                  class="circular"
+                  style="background-color: rgb(114, 0, 0); color: white"
+                >
+                  <span class="material-symbols-outlined"> delete </span>
+                </button>
+                <button
+                  class="circular"
+                  style="background-color: rgb(0, 150, 30); color: white"
+                >
+                  <span class="material-symbols-outlined"> done </span>
+                </button>
+                <button
+                  class="circular"
+                  style="
+                    background-color: rgba(0, 16, 197, 0.692);
+                    color: white;
+                  "
+                >
+                  <span class="material-symbols-outlined"> edit </span>
+                </button>
+              </div>
+            </div>`;
+      document.getElementById("tasks").innerHTML += content;
+    }
+  </script>
 </html>
