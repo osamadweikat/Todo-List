@@ -143,6 +143,7 @@
 
     function fillTasksOnThePage() {
       document.getElementById("tasks").innerHTML = "";
+      let index = 0
       for (task of tasks) {
         let content = `<div class="task">
               <div style="width: 70%">
@@ -163,6 +164,7 @@
                 "
               >
                 <button
+                onclick="deleteTask(${index})"
                   class="circular"
                   style="background-color: rgb(114, 0, 0); color: white"
                 >
@@ -186,6 +188,7 @@
               </div>
             </div>`;
         document.getElementById("tasks").innerHTML += content;
+        index++;
       }
     }
 
@@ -217,5 +220,15 @@
       tasks.push(taskObj);
       fillTasksOnThePage();
     });
+
+    function deleteTask(index){
+        let task = tasks[index]
+        let isConfirmed = confirm("هل أنت متأكد من حذف : " + task.title + "؟")
+
+        if(isConfirmed){
+            tasks.splice(index, 1)
+        fillTasksOnThePage();
+        }
+    }
   </script>
 </html>
