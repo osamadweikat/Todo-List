@@ -145,6 +145,11 @@
       },
     ];
 
+    function getTasksFromStorage() {
+      let savedTasks = JSON.parse(localStorage.getItem("tasks"));
+      tasks = savedTasks ?? [];
+    }
+
     function fillTasksOnThePage() {
       document.getElementById("tasks").innerHTML = "";
       let index = 0;
@@ -208,6 +213,8 @@
       }
     }
 
+    getTasksFromStorage();
+
     fillTasksOnThePage();
     document.getElementById("add-btn").addEventListener("click", function () {
       let taskName = prompt("الرجاء إدخال عنوان المهمة");
@@ -234,6 +241,7 @@
         isDone: false,
       };
       tasks.push(taskObj);
+      storageTasks();
       fillTasksOnThePage();
     });
 
@@ -243,6 +251,7 @@
 
       if (isConfirmed) {
         tasks.splice(index, 1);
+        storageTasks();
         fillTasksOnThePage();
       }
     }
@@ -251,13 +260,20 @@
       let task = tasks[index];
       let newTaskTitl = prompt("الرجاء إدخال عنوان المهمة الجديد", task.title);
       task.title = newTaskTitl;
+      storageTasks();
       fillTasksOnThePage();
     }
 
     function toggleTaskCompletion(index) {
       let task = tasks[index];
       task.isDone = !task.isDone;
+      storageTasks();
       fillTasksOnThePage();
+    }
+
+    function storageTasks() {
+      let taskString = JSON.stringify(tasks);
+      localStorage.setItem("tasks", taskString);
     }
   </script>
 </html>
